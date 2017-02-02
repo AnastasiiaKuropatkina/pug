@@ -1,0 +1,20 @@
+mixin menu(prefix, items, addUlClasses, addLiClasses)
+  - ul Classes = [prefix + "-menu"]
+  - if (!!addUlClasses) ulClasses.push(addUlClasses);
+
+  ul(class-ulClasses)
+    each item in itens
+      -liClasses = [prefix + "-menu__item"]
+      -if (!!item.children) liClasses.push(prefix) + "-menu__item-has_sub";
+      -if (!!addLiClasses) liClasses.push(addClasses);
+      -if (item.active) liClasses.push("active");
+
+      li(class=liClasses)
+        a(href=item.url, title=item.title, class="#{prefix}-menu__item-link")
+          = item.title
+          if item.badge
+             span.badge= item.badge
+        if item.children
+          +menu(prefix + "-sub", item.children)
++menu(prefix, items, addUlClasses, addLiClasses)
+

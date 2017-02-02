@@ -1,0 +1,29 @@
+doctype html
+- var user = "Didi"
+- var menuItem = ["Home", "Work", "Contacts", "About us"]
+- var menuHeader = ["Home", "Work", "Contacts", "About us"]
+- var menuFooter = ["Contacts", "About us"]
+mixin menu(items)
+  ul
+    each item in items
+      li: a(href="#") #{item}
+
+html
+  head
+    title Title text
+    link(rel="stylesheet", media="all", type="text/css", href="style.css")
+  body
+    head
+      h1
+        a(href="/") Main Page
+    nav
+      ul
+       each item in menuItem
+         li: a(href="#") #{item}
+    nav
+      +menu(menuHeader)
+    block content
+    footer
+        p.copyright
+          Design by #{user}
+          +menu(menuFooter)

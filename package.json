@@ -1,0 +1,21 @@
+{
+  "name": "projector_pug",
+  "version": "1.0.0",
+  "description": "jade/pug lesson_1 for projector",
+  "repository": "https://github.com/AnastasiyaDatsyuk/pug.git",
+  "main": "pug.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "pug": "^0.1.0",
+    "pug-cli": "^1.0.0-alpha6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run-pug" : "pug jade/ --out html/"
+  },
+  "author": "Anastasiya",
+  "license": "ISC"
+}

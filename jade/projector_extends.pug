@@ -1,0 +1,14 @@
+doctype html
+html(lang="en")
+  head
+    block title
+      title Default title
+    block scripts
+      script(src="jquery.js")
+
+  - var authenticated = true
+  body(class=authenticated ? 'authed' : 'anon')
+    block content
+    block foot
+
+    include projector_footer.pug

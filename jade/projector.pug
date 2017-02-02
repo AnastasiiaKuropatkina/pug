@@ -1,0 +1,116 @@
+extends projector_extends.pug
+//- extends
+//- extends - позволяет добавить контент и переопределить содержимое блоков, которые объявлены повторно.
+//- Это удобно в том случае, когда для нескольких страниц надо вывести один и тот же блок, но с разным содержимым.
+block scripts
+  script(src='/jquery.js')
+  script(src='/pets.js')
+
+block title
+  title NEWWW Article Title
+
+block content
+  h1 My Article
+  - var pets = ['cat', 'dog']
+    each petName in pets
+      include pet.pug
+      //includes
+      //includes используется для добавления содержимого одного jade файла в другой; по сути, это позволяет добавить кусок кода из одного файла в другой в указанное место.
+      //Это удобно, например, когда надо дополнить содержимое какой-нибудь страницы новым контентом, в котором остальные страницы не нуждаются.
+
+    // atributs
+    a.button
+    .content
+      a#main-link
+    #content
+    a(href='google.com') Google
+
+    // input
+    input(type='checkbox', checked)
+    input(type='checkbox', checked=true)
+    input(type='checkbox', checked=false)
+    input(type='checkbox', checked=true && 'checked')
+
+    // case
+    -var friends = 10
+    case friends
+      when 0
+        p you have no friends
+      when 1
+        p you have a friend
+      default
+        p you have #{friends} friends
+
+    // just some comments
+    p foo
+    p bar
+
+    //- will not output within markup
+    p foo
+    p bar
+
+    // if else
+    - var user = {description: 'foo bar baz'}
+    - var authorised = false
+    #user
+      if user.description
+        h2 Description
+        p.description= user.description
+      else if authorised
+        h2 Description
+        p.description.
+        User has no description
+        why not add one...
+      else
+        h1 Description
+        p.description User has no description
+
+    // each
+    ul
+      each val in [1, 2, 3, 4, 5]
+        li= val
+
+    ul
+      each val, index in ['zero', 'one', 'two']
+        li= index + ': ' + val
+
+    - var n = o
+    ul
+      while n < 4
+        li= n++
+
+    // Mixins
+    mixin list
+      ul
+        li foo
+        li bar
+        li baz
+    // Use mixins
+    +list
+    +list
+
+    // Mixins
+    mixin pet(name)
+      li.pet= name
+      //-()передаеться в mixin = name
+    ul
+      +pet('cat')
+      +pet('dog')
+      +pet('pig')
+
+    // Mixins
+    mixin article(title)
+      .article
+        .article-wrapper
+          h1= title
+          if block
+            block
+          else
+            p No content
+    +article('Hello wold')
+
+    +article('Hello wold')
+      p This is my
+      p Amazing article
+
+

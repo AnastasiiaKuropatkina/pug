@@ -1,0 +1,10 @@
+extends template
+block title
+  title Page A
+append css
+  link(rel="stylesheet", href="new.css")
+  // подключит попорядку
+block content
+  h1 This is page A
+  include includes/test
+  include includes/menu

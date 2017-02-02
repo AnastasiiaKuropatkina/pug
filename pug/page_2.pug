@@ -1,0 +1,13 @@
+extends template
+block title
+  title Page B
+prepend css
+  link(rel="stylesheet", href="top.css")
+  // подключит перед основным блоком
+block content
+  h1 This is page B
+  p text text
+  include includes/test
+  include includes/menu
+  +addSomeText('123')
+  +menu('prefix', 'items', 'menu__comment', 'item__comment')
